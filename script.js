@@ -20,19 +20,22 @@ const modifyTodo = (taskArr) => {
         const checkIcon = document.createElement("img");
         const deleteBtn = document.createElement("button");
         const deleteIcon = document.createElement("img");
+        const editBtn = document.createElement("button");
+        const editIcon = document.createElement("img");
 
         taskname.textContent = value;
-        taskname.classList.add("task-name");
+        taskname.setAttribute('class','task-name fs-5 mb-0 overflow-scroll');
         if (completeArr.indexOf(value) !== -1)
-            taskname.classList.add("complete-task");
+            taskname.classList.add("text-decoration-line-through");
 
         taskBtnContainer.appendChild(checkBtn);
+        taskBtnContainer.appendChild(editBtn);
         taskBtnContainer.appendChild(deleteBtn);
 
         checkIcon.src = "images/checked.png";
         checkIcon.classList.add("task-icon");
 
-        checkBtn.classList.add("task-btn");
+        checkBtn.classList.add("border-0");
         checkBtn.classList.add("checkTask");
         checkBtn.setAttribute("onClick", `completeTask('${value}')`);
         checkBtn.appendChild(checkIcon);
@@ -40,14 +43,21 @@ const modifyTodo = (taskArr) => {
         deleteIcon.src = "images/trash-bin.png";
         deleteIcon.classList.add("task-icon");
 
-        deleteBtn.classList.add("task-btn");
+        deleteBtn.classList.add("border-0");
         deleteBtn.setAttribute("onClick", `deleteTask(${index})`);
         deleteBtn.classList.add("deleteTask");
         deleteBtn.appendChild(deleteIcon);
 
-        newTask.appendChild(taskname);
-        newTask.appendChild(taskBtnContainer);
-        newTask.classList.add("task-container");
+        editIcon.src = "images/edit.png";
+        editIcon.classList.add("task-icon");
+
+        editBtn.classList.add("border-0");
+        editBtn.setAttribute("onClick", `editTask('${value}')`);
+        editBtn.classList.add("deleteTask");
+        editBtn.appendChild(editIcon);
+
+        newTask.append(taskname,taskBtnContainer);
+        newTask.setAttribute('class',"task-container d-flex justify-content-between p-2 m-auto rounded-1 mb-2");
 
         todoList.appendChild(newTask);
     });
@@ -82,15 +92,7 @@ todoInput.addEventListener("keypress", (e) => {
     }
 });
 
-const deleteTask = (index) => {
-    todoArr.splice(index, 1);
-    modifyTodo(todoArr);
-};
-
-const completeTask = (value) => {
-    console.log('Before '+value);
-    (completeArr.indexOf(value) === -1) ? completeArr.push(value) : completeArr.splice(completeArr.indexOf(value),1);
-
+const toggleActive = () =>{
     if (allBtn.classList.contains('active') )
         modifyTodo(todoArr);
 
@@ -99,6 +101,38 @@ const completeTask = (value) => {
 
     else
         activeTask();
+}
+
+const deleteTask = (index) => {
+    todoArr.splice(index, 1);
+    modifyTodo(todoArr);
+};
+
+const completeTask = (value) => {
+    (completeArr.indexOf(value) === -1) ? completeArr.push(value) : completeArr.splice(completeArr.indexOf(value),1);
+    toggleActive();
+};
+
+const editTask = (value) => {
+    const index = todoArr.indexOf(value);
+    console.log(index);
+    const completeIndex = completeArr.indexOf(value);
+    const editTask = document.getElementsByClassName('task-name')[index];
+    console.log(editTask);
+    editTask.setAttribute("contenteditable" , "true");
+    editTask.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            todoArr[index] = editTask.textContent;
+
+            if (completeIndex !== -1)
+                completeArr[completeIndex] = editTask.textContent;
+           
+            editTask.setAttribute("contenteditable" , "false")
+            console.log(completeArr);
+            console.log(todoArr);
+            toggleActive();
+        }
+    });
 };
 
 const activeTask = () => {

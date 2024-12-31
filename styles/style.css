@@ -1,9 +1,9 @@
 body {
-  background-color: #A594F9;
+  background-color: #a594f9;
 }
 
 .todo-container-heading {
-  color: #EEEEEE;
+  color: #eeeeee;
 }
 .todo-container-image {
   width: 40px;
@@ -19,11 +19,11 @@ body {
 }
 
 #add-btn {
-  color: #EEEEEE;
+  color: #eeeeee;
   background-color: #43358a;
 }
 #add-btn:hover {
-  background-color: #5d49c4;
+  background-color: #5543af;
 }
 
 .task-icon {
@@ -31,52 +31,34 @@ body {
 }
 
 .task-container {
-  display: flex;
-  justify-content: space-between;
   max-width: 500px;
-  margin: auto;
-  padding: 10px;
-  background-color: #F5EFFF;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  background-color: #f5efff;
 }
 
 .task-name {
-  font-size: 25px;
-  margin-bottom: 0px;
-  width: calc(100% - 84px);
-  max-height: 40px;
-  overflow: scroll;
+  width: calc(100% - 127px);
+  max-height: 37px;
   scrollbar-width: none;
-}
-
-.task-btn {
-  border: 0px;
-}
-
-.complete-task {
-  text-decoration: line-through;
 }
 
 #todo-list {
   max-height: 500px;
-  overflow-y: scroll;
 }
 
 .filter-button {
-  color: #F5EFFF;
-  border: 2px solid #F5EFFF;
+  color: #f5efff;
+  border: 2px solid #f5efff;
   background-color: transparent;
   transition: all 0.3s ease;
 }
 .filter-button:hover {
-  color: #A594F9;
-  background-color: #F5EFFF;
+  color: #a594f9;
+  background-color: #f5efff;
 }
 
 .active {
-  color: #A594F9;
-  background-color: #F5EFFF;
+  color: #a594f9;
+  background-color: #f5efff;
 }
 
 .alert {

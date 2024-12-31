@@ -1,89 +1,75 @@
+$light-purple: #a594f9;
+$white: #f5efff;
+$dark-purple: #43358a;
+
 body {
- background-color: #A594F9;
+  background-color: $light-purple;
 }
 
 .todo-container {
-    &-heading {
-        color: #EEEEEE;
-    }
-    &-image {
-        width: 40px;
-    }
+  &-heading {
+    color: #eeeeee;
+  }
+  &-image {
+    width: 40px;
+  }
 }
 
 #todo-input {
-    width: 100%;
-    color: #43358a;
+  width: 100%;
+  color: $dark-purple;
 }
 
 .todo-input-container {
-    max-width: 500px;
+  max-width: 500px;
 }
 
 #add-btn {
-    color: #EEEEEE;
-    background-color: #43358a;
+  color: #eeeeee;
+  background-color: $dark-purple;
 
-    &:hover {
-        background-color: #5d49c4;
-    }
+  &:hover {
+    background-color: lighten($dark-purple, 10);
+  }
 }
 
 .task-icon {
-    width: 30px;
+  width: 30px;
 }
 
 .task-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 500px;
-    margin: auto;
-    padding: 10px;
-    background-color: #F5EFFF;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  max-width: 500px;
+  background-color: $white;
 }
 
 .task-name {
-    font-size: 25px;
-    margin-bottom: 0px;
-    width: calc(100% - 84px);
-    max-height: 40px;
-    overflow: scroll;
-    scrollbar-width: none;
-}
-
-.task-btn {
-    border:0px;
-}
-
-.complete-task {
-    text-decoration: line-through;
+  width: calc(100% - 127px);
+  max-height: 37px;
+  scrollbar-width: none;
 }
 
 #todo-list {
-    max-height: 500px;
-    overflow-y: scroll;
+  max-height: 500px;
 }
 
 .filter-button {
-    color: #F5EFFF;
-    border:2px solid #F5EFFF;
-    background-color: transparent;
-    transition: all 0.3s ease;
+  color: $white;
+  border: 2px solid $white;
+  background-color: transparent;
+  transition: all 0.3s ease;
 
-    &:hover {
-        color: #A594F9;
-        background-color: #F5EFFF;
-    }
+  &:hover {
+    color: $light-purple;
+    background-color: $white;
+  }
 }
 
 .active {
-    color: #A594F9;
-    background-color: #F5EFFF;
+  color: $light-purple;
+  background-color: $white;
 }
 
 .alert {
-    width: 300px;
-    display: none;
+  width: 300px;
+  display: none;
 }
