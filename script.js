@@ -7,6 +7,8 @@ const allBtn = document.getElementById("all");
 const activeBtn = document.getElementById("active");
 const completeBtn = document.getElementById("complete");
 const clearBtn = document.getElementById("clear");
+const filterBtns = document.querySelectorAll(".filter-button");
+const alert = document.querySelector(".alert");
 
 const modifyTodo = (taskArr) => {
     todoList.innerHTML = "";
@@ -32,7 +34,7 @@ const modifyTodo = (taskArr) => {
 
         checkBtn.classList.add("task-btn");
         checkBtn.classList.add("checkTask");
-        checkBtn.setAttribute("onClick", `completeTask(${index})`);
+        checkBtn.setAttribute("onClick", `completeTask('${value}')`);
         checkBtn.appendChild(checkIcon);
 
         deleteIcon.src = "images/trash-bin.png";
@@ -55,7 +57,17 @@ const addTask = () => {
     const task = todoInput.value.trim();
     todoInput.value = "";
 
-    if (todoArr.indexOf(task) === -1 && task !== "") todoArr.unshift(task);
+    if(task !== ""){
+        if (todoArr.indexOf(task) === -1) 
+            todoArr.unshift(task);
+        else {
+            alert.style.display = 'block'
+
+            setTimeout(()=>{
+                alert.style.display = 'none'
+            },5000)
+        }
+    }
 
     modifyTodo(todoArr);
 };
@@ -75,30 +87,56 @@ const deleteTask = (index) => {
     modifyTodo(todoArr);
 };
 
-const completeTask = (index) => {
-    if (completeArr.indexOf(todoArr[index]) === -1)
-        completeArr.unshift(todoArr[index]);
-    else 
-        completeArr.splice(completeArr.indexOf(todoArr[index]),1);
+const completeTask = (value) => {
+    console.log('Before '+value);
+    (completeArr.indexOf(value) === -1) ? completeArr.push(value) : completeArr.splice(completeArr.indexOf(value),1);
 
-    document.getElementsByClassName('task-name')[index].classList.toggle('complete-task');
+    if (allBtn.classList.contains('active') )
+        modifyTodo(todoArr);
+
+    else if (completeBtn.classList.contains('active') )
+        modifyTodo(completeArr);
+
+    else
+        activeTask();
 };
+
+const activeTask = () => {
+    const activeArr = todoArr.filter((value) => completeArr.indexOf(value) === -1);
+    modifyTodo(activeArr);
+    removeActiveClass();
+    activeBtn.classList.add('active');
+}
+
+const removeActiveClass = () => {
+    filterBtns.forEach(filterBtn => {
+        filterBtn.classList.remove('active');
+    });
+}
 
 allBtn.addEventListener("click", () => {
     modifyTodo(todoArr);
+    removeActiveClass();
+    allBtn.classList.add('active');
 });
 
 activeBtn.addEventListener("click", () => {
     const activeArr = todoArr.filter((value) => completeArr.indexOf(value) === -1);
     modifyTodo(activeArr);
+    removeActiveClass();
+    activeBtn.classList.add('active');
 });
 
 completeBtn.addEventListener("click", () => {
     modifyTodo(completeArr);
+    removeActiveClass();
+    completeBtn.classList.add('active');
 });
 
 clearBtn.addEventListener("click", () => {
     todoArr = todoArr.filter((value) => completeArr.indexOf(value) === -1);
     completeArr.splice(0, completeArr.length);
     modifyTodo(completeArr);
+    removeActiveClass();
+    clearBtn.classList.add('active');
 });

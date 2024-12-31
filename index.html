@@ -9,6 +9,9 @@
 </head>
 <body>
     <section class="todo-container p-3">
+        <div class="alert alert-danger position-fixed start-50 translate-middle-x" role="alert">
+            Enter unique task!
+          </div>
         <div class="todo-container-heading d-flex align-items-center justify-content-center">
             <h1 class="my-0 me-2">To-Do List</h1>
             <img src="images/sketchbook.png" alt="sketchbook" class="todo-container-image" width="40">
@@ -24,7 +27,7 @@
         </div>
 
         <div class="todo-filter-container text-center mt-5">
-            <button id="all" class="py-1 px-2 px-sm-3 rounded-2 filter-button fw-bold">All</button>
+            <button id="all" class="py-1 px-2 px-sm-3 rounded-2 filter-button fw-bold active">All</button>
             <button id="active" class="py-1 ppx-2 px-sm-3 rounded-2 filter-button fw-bold">Active</button>
             <button id="complete" class="py-1 px-2 px-sm-3 rounded-2 filter-button fw-bold">Completed</button>
             <button id="clear" class="py-1 px-2 px-sm-3 rounded-2 filter-button fw-bold">Clear</button>

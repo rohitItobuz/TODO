@@ -23,6 +23,10 @@ body {
 #add-btn {
     color: #EEEEEE;
     background-color: #43358a;
+
+    &:hover {
+        background-color: #5d49c4;
+    }
 }
 
 .task-icon {
@@ -44,7 +48,8 @@ body {
     font-size: 25px;
     margin-bottom: 0px;
     width: calc(100% - 84px);
-    overflow-x: scroll;
+    max-height: 40px;
+    overflow: scroll;
     scrollbar-width: none;
 }
 
@@ -71,4 +76,14 @@ body {
         color: #A594F9;
         background-color: #F5EFFF;
     }
+}
+
+.active {
+    color: #A594F9;
+    background-color: #F5EFFF;
+}
+
+.alert {
+    width: 300px;
+    display: none;
 }
