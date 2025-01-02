@@ -10,6 +10,7 @@ body {
   &-heading {
     color: #eeeeee;
   }
+
   &-image {
     width: 40px;
   }
@@ -21,7 +22,7 @@ body {
 }
 
 .todo-input-container {
-  max-width: 500px;
+  max-width: 700px;
 }
 
 #add-btn {
@@ -38,7 +39,7 @@ body {
 }
 
 .task-container {
-  max-width: 500px;
+  max-width: 700px;
   background-color: $white;
 }
 
@@ -49,7 +50,7 @@ body {
 }
 
 #todo-list {
-  max-height: 500px;
+  max-height: 55vh;
 }
 
 .filter-button {
