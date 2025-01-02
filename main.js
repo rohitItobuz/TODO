@@ -9,7 +9,7 @@ const activeBtn = document.getElementById("active");
 const completeBtn = document.getElementById("complete");
 const clearBtn = document.getElementById("clear");
 const filterBtns = document.querySelectorAll(".filter-button");
-const alert = document.querySelector(".alert");
+const alert = document.querySelector(".alert-msg");
 
 const createList = ({ value, active, dateTime }, index, count) => {
   const newTask = document.createElement("div");
